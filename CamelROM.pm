@@ -56,7 +56,7 @@ sub read_bytes
 #
 # 1st parameter - Full path of file to read.
 # 2nd parameter - Number of bytes to read.
-# 3rd parameter - Offset at which to read (starting at zero).
+# 3rd parameter - Offset at which to read.
 sub read_bytes_at_offset
 {
 	my $file_to_read = $_[0];
