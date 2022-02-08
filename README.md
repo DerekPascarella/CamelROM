@@ -68,6 +68,18 @@ my $bytes = "05 06 07 08";         # byte string can have spaces (or not)
 append_bytes("out.bin", $bytes);   # writes new (or appends to existing) file with the 4 bytes "05 06 07 08"
 ```
 
+### insert_bytes
+Subroutine to insert a sequence hexadecimal values at a specified offset (in decimal format) into a specified file.
+- Parameter 1 - Full path of file in which to insert data.
+- Parameter 2 - Hexadecimal representation of data to be inserted.
+- Parameter 3 - Offset at which to insert.
+
+Example usage:
+```
+my $bytes = "05 06 07 08";            # byte string can have spaces (or not)
+insert_bytes("out.bin", $bytes, 4);   # inserts "05 06 07 08" into file at decimal offset 4
+```
+
 ### generate_character_map_hash
 Subroutine to generate hash mapping ASCII characters to custom hexadecimal values. Source character map file should be formatted with each character definition on its own line (\<hex\>|\<ascii\>). Example character map file:
 ``` 
