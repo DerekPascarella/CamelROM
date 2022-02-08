@@ -3,7 +3,6 @@
 # of ROM hacks.
 #
 # Written by Derek Pascarella (ateam)
-
 package CamelROM;
 
 # Declare module version.
@@ -12,7 +11,7 @@ our $VERSION = 0.1;
 # Export subroutines.
 require Exporter;
 @ISA = qw(Exporter);
-@EXPORT = qw(decimal_to_hex endian_swap read_bytes read_bytes_at_offset write_bytes append_bytes generate_character_map_hash);
+@EXPORT = qw(decimal_to_hex endian_swap read_bytes read_bytes_at_offset write_bytes append_bytes insert_bytes generate_character_map_hash);
 
 # Subroutine to return hexadecimal representation of a decimal number.
 #
@@ -113,6 +112,22 @@ sub append_bytes
 	}
 
 	close $filehandle;
+}
+
+# Subroutine to insert a sequence hexadecimal values at a specified offset (in decimal format) into a
+# specified file.
+#
+# 1st parameter - Full path of file in which to insert data.
+# 2nd parameter - Hexadecimal representation of data to be appended to file.
+# 3rd parameter - Offset at which to insert.
+sub insert_bytes
+{
+	my $output_file = $_[0];
+	(my $hex_data = $_[1]) =~ s/\s+//g;
+	my $insert_offset = $_[2];
+	my $data_before = &read_bytes($output_file, $insert_offset);
+	my $data_after = &read_bytes_at_offset($output_file, ((stat $output_file)[7] - $insert_offset), $insert_offset);
+	&write_bytes($output_file, $data_before . $hex_data . $data_after);
 }
 
 # Subroutine to generate hash mapping ASCII characters to custom hexadecimal values. Source character
