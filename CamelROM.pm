@@ -118,7 +118,7 @@ sub append_bytes
 # specified file.
 #
 # 1st parameter - Full path of file in which to insert data.
-# 2nd parameter - Hexadecimal representation of data to be appended to file.
+# 2nd parameter - Hexadecimal representation of data to be inserted.
 # 3rd parameter - Offset at which to insert.
 sub insert_bytes
 {
