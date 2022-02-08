@@ -70,7 +70,7 @@ sub read_bytes_at_offset
 	return unpack 'H*', $bytes;
 }
 
-# Subroutine to write a sequence hexadecimal values to a specified file.
+# Subroutine to write a sequence of hexadecimal values to a specified file.
 #
 # 1st parameter - Full path of file to write.
 # 2nd parameter - Hexadecimal representation of data to be written to file.
@@ -92,7 +92,7 @@ sub write_bytes
 	close $filehandle;
 }
 
-# Subroutine to append a sequence hexadecimal values to a specified file.
+# Subroutine to append a sequence of hexadecimal values to a specified file.
 #
 # 1st parameter - Full path of file to append.
 # 2nd parameter - Hexadecimal representation of data to be appended to file.
@@ -114,7 +114,7 @@ sub append_bytes
 	close $filehandle;
 }
 
-# Subroutine to insert a sequence hexadecimal values at a specified offset (in decimal format) into a
+# Subroutine to insert a sequence of hexadecimal values at a specified offset (in decimal format) into a
 # specified file.
 #
 # 1st parameter - Full path of file in which to insert data.
