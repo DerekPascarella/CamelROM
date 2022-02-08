@@ -84,6 +84,6 @@ The ASCII key in the returned hash will contain the custom hexadecimal value (e.
 
 Example usage:
 ```
-my %character_map = generate_character_map_hash("table.txt");   # creates hash with key-value pairs for defined characters
+my %character_map = generate_character_map_hash("table.txt");   # creates hash with key-value pairs for defined characters in "table.txt"
 print $character_map{'A'};                                      # prints hexadecimal representation of "A" (e.g. "8260")
 ```
