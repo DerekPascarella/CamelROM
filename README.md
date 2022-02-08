@@ -47,7 +47,7 @@ print "$bytes";                                        # prints first 4 bytes af
 ```
 
 ### write_bytes
-Subroutine to write a sequence hexadecimal values to a specified file.
+Subroutine to write a sequence of hexadecimal values to a specified file.
 - Parameter 1 - Full path of file to write.
 - Parameter 2 - Hexadecimal representation of data to be written to file.
 
@@ -58,7 +58,7 @@ write_bytes("out.bin", $bytes);   # writes new (or overwrites existing) file wit
 ```
 
 ### append_bytes
-Subroutine to append a sequence hexadecimal values to a specified file.
+Subroutine to append a sequence of hexadecimal values to a specified file.
 - Parameter 1 - Full path of file to write.
 - Parameter 2 - Hexadecimal representation of data to be written to file.
 
@@ -69,7 +69,7 @@ append_bytes("out.bin", $bytes);   # writes new (or appends to existing) file wi
 ```
 
 ### insert_bytes
-Subroutine to insert a sequence hexadecimal values at a specified offset (in decimal format) into a specified file.
+Subroutine to insert a sequence of hexadecimal values at a specified offset (in decimal format) into a specified file.
 - Parameter 1 - Full path of file in which to insert data.
 - Parameter 2 - Hexadecimal representation of data to be inserted.
 - Parameter 3 - Offset at which to insert.
