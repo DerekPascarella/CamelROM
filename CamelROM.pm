@@ -125,8 +125,10 @@ sub insert_bytes
 	my $output_file = $_[0];
 	(my $hex_data = $_[1]) =~ s/\s+//g;
 	my $insert_offset = $_[2];
+	
 	my $data_before = &read_bytes($output_file, $insert_offset);
 	my $data_after = &read_bytes_at_offset($output_file, ((stat $output_file)[7] - $insert_offset), $insert_offset);
+	
 	&write_bytes($output_file, $data_before . $hex_data . $data_after);
 }
 
