@@ -14,7 +14,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(decimal_to_hex endian_swap read_bytes read_bytes_at_offset write_bytes append_bytes generate_character_map_hash);
 
-# Subroutine to return hexidecimal representation of a decimal number.
+# Subroutine to return hexadecimal representation of a decimal number.
 #
 # 1st parameter - Decimal number.
 sub decimal_to_hex
@@ -22,10 +22,10 @@ sub decimal_to_hex
 	return sprintf("%02X", $_[0]);
 }
 
-# Subroutine to swap between big/little endian by reversing order of bytes from specified hexidecimal
+# Subroutine to swap between big/little endian by reversing order of bytes from specified hexadecimal
 # data.
 #
-# 1st parameter - Hexidecimal representation of data.
+# 1st parameter - Hexadecimal representation of data.
 sub endian_swap
 {
 	(my $hex_data = $_[0]) =~ s/\s+//g;
@@ -35,7 +35,7 @@ sub endian_swap
 }
 
 # Subroutine to read a specified number of bytes (starting at the beginning) of a specified file,
-# returning hexidecimal representation of data.
+# returning hexadecimal representation of data.
 #
 # 1st parameter - Full path of file to read.
 # 2nd parameter - Number of bytes to read.
@@ -52,7 +52,7 @@ sub read_bytes
 }
 
 # Subroutine to read a specified number of bytes, starting at a specific offset (in decimal format), of
-# a specified file, returning hexidecimal representation of data.
+# a specified file, returning hexadecimal representation of data.
 #
 # 1st parameter - Full path of file to read.
 # 2nd parameter - Number of bytes to read.
@@ -71,10 +71,10 @@ sub read_bytes_at_offset
 	return unpack 'H*', $bytes;
 }
 
-# Subroutine to write a sequence hexidecimal values to a specified file.
+# Subroutine to write a sequence hexadecimal values to a specified file.
 #
 # 1st parameter - Full path of file to write.
-# 2nd parameter - Hexidecimal representation of data to be written to file.
+# 2nd parameter - Hexadecimal representation of data to be written to file.
 sub write_bytes
 {
 	my $output_file = $_[0];
@@ -93,10 +93,10 @@ sub write_bytes
 	close $filehandle;
 }
 
-# Subroutine to append a sequence hexidecimal values to a specified file.
+# Subroutine to append a sequence hexadecimal values to a specified file.
 #
 # 1st parameter - Full path of file to append.
-# 2nd parameter - Hexidecimal representation of data to be appended to file.
+# 2nd parameter - Hexadecimal representation of data to be appended to file.
 sub append_bytes
 {
 	my $output_file = $_[0];
@@ -115,7 +115,7 @@ sub append_bytes
 	close $filehandle;
 }
 
-# Subroutine to generate hash mapping ASCII characters to custom hexidecimal values. Source character
+# Subroutine to generate hash mapping ASCII characters to custom hexadecimal values. Source character
 # map file should be formatted with each character definition on its own line (<hex>|<ascii>). Example
 # character map file:
 #  ______
@@ -125,7 +125,7 @@ sub append_bytes
 # | 02|C |
 # |______|
 #
-# The ASCII key in the returned hash will contain the custom hexidecimal value (e.g. $hash{'B'} will
+# The ASCII key in the returned hash will contain the custom hexadecimal value (e.g. $hash{'B'} will
 # equal "01").
 #
 # 1st parameter - Full path of character map file.
