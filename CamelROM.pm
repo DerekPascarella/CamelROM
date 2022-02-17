@@ -6,7 +6,7 @@
 package CamelROM;
 
 # Declare module version.
-our $VERSION = 0.1;
+our $VERSION = 0.2;
 
 # Export subroutines.
 require Exporter;
@@ -125,9 +125,28 @@ sub insert_bytes
 	my $output_file = $_[0];
 	(my $hex_data = $_[1]) =~ s/\s+//g;
 	my $insert_offset = $_[2];
+		
+	my $data_before = &read_bytes($output_file, $insert_offset);
+	my $data_after = &read_bytes_at_offset($output_file, (stat $output_file)[7] - $insert_offset, $insert_offset);
+	
+	&write_bytes($output_file, $data_before . $hex_data . $data_after);
+}
+
+# Subroutine to write a sequence of hexadecimal values at a specified offset (in decimal format) into a
+# specified file, as to patch the existing data at that offset.
+#
+# 1st parameter - Full path of file in which to insert patch data.
+# 2nd parameter - Hexadecimal representation of data to be inserted.
+# 3rd parameter - Offset at which to patch.
+sub patch_bytes
+{
+	my $output_file = $_[0];
+	(my $hex_data = $_[1]) =~ s/\s+//g;
+	my $insert_offset = $_[2];
+	my $hex_data_length = length($hex_data) / 2;
 	
 	my $data_before = &read_bytes($output_file, $insert_offset);
-	my $data_after = &read_bytes_at_offset($output_file, ((stat $output_file)[7] - $insert_offset), $insert_offset);
+	my $data_after = &read_bytes_at_offset($output_file, (stat $output_file)[7] - $insert_offset - $hex_data_length, $insert_offset + $hex_data_length);
 	
 	&write_bytes($output_file, $data_before . $hex_data . $data_after);
 }
