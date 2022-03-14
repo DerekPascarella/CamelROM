@@ -11,7 +11,7 @@ our $VERSION = 0.2;
 # Export subroutines.
 require Exporter;
 @ISA = qw(Exporter);
-@EXPORT = qw(decimal_to_hex endian_swap read_bytes read_bytes_at_offset write_bytes append_bytes insert_bytes generate_character_map_hash);
+@EXPORT = qw(decimal_to_hex endian_swap read_bytes read_bytes_at_offset write_bytes append_bytes insert_bytes patch_bytes generate_character_map_hash);
 
 # Subroutine to return hexadecimal representation of a decimal number.
 #
