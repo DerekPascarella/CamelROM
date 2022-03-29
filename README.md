@@ -1,7 +1,5 @@
 # CamelROM
-<img align="right" src="https://i.imgur.com/K3dXPTm.png">A perl module containing useful functions for those developing translation patches and other forms of ROM hacks. 
-
-Written by Derek Pascarella (ateam).
+<img align="right" src="https://i.imgur.com/K3dXPTm.png">A perl module containing useful functions for those developing translation patches and other forms of ROM hacks.
 
 ### decimal_to_hex
 Subroutine to return hexadecimal representation of a decimal number.
