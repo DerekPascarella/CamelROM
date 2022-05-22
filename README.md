@@ -65,7 +65,7 @@ Subroutine to append a sequence of hexadecimal values to a specified file.
 Example usage:
 ```
 my $bytes = "05 06 07 08";         # byte string can have spaces (or not)
-append_bytes("out.bin", $bytes);   # writes new (or appends to existing) file with the 4 bytes "05 06 07 08"
+append_bytes("out.bin", $bytes);   # appends existing file with the 4 bytes "05 06 07 08"
 ```
 
 ### insert_bytes
