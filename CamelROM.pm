@@ -115,7 +115,7 @@ sub append_bytes
 }
 
 # Subroutine to insert a sequence of hexadecimal values at a specified offset (in decimal format) into a
-# specified file.
+# specified file, as to expand the existing file.
 #
 # 1st parameter - Full path of file in which to insert data.
 # 2nd parameter - Hexadecimal representation of data to be inserted.
