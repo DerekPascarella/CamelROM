@@ -69,7 +69,7 @@ append_bytes("out.bin", $bytes);   # appends existing file with the 4 bytes "05 
 ```
 
 ### insert_bytes
-Subroutine to insert a sequence of hexadecimal values at a specified offset (in decimal format) into a specified file.
+Subroutine to insert a sequence of hexadecimal values at a specified offset (in decimal format) into a specified file, as to expand the existing file.
 - Parameter 1 - Full path of file in which to insert data.
 - Parameter 2 - Hexadecimal representation of data to be inserted.
 - Parameter 3 - Offset at which to insert.
