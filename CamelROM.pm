@@ -6,7 +6,7 @@
 package CamelROM;
 
 # Declare module version.
-our $VERSION = 0.2;
+our $VERSION = 0.3;
 
 # Export subroutines.
 require Exporter;
@@ -16,9 +16,10 @@ require Exporter;
 # Subroutine to return hexadecimal representation of a decimal number.
 #
 # 1st parameter - Decimal number.
+# 2nd parameter - Number of bytes with which to represent hexadecimal number.
 sub decimal_to_hex
 {
-	return sprintf("%02X", $_[0]);
+	return sprintf("%0" . $_[1] * 2 . "X", $_[0]);
 }
 
 # Subroutine to swap between big/little endian by reversing order of bytes from specified hexadecimal
