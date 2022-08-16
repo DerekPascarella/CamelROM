@@ -34,7 +34,7 @@ Subroutine to read a specified number of bytes (starting at the beginning) of a 
 Example usage:
 ```
 my $bytes = read_bytes("file.bin", 4);   # reads first 4 bytes of "file.bin"
-print "$bytes";                          # prints first 4 bytes (e.g. "82 63 82 6F")
+print "$bytes";                          # prints first 4 bytes (e.g., "82 63 82 6F")
 ```
 
 ### read_bytes_at_offset
@@ -46,7 +46,7 @@ Subroutine to read a specified number of bytes, starting at a specific offset (i
 Example usage:
 ```
 my $bytes = read_bytes_at_offset("file.bin", 4, 16);   # reads first 4 bytes of "file.bin" after decimal offset 16
-print "$bytes";                                        # prints first 4 bytes after decimal offset 16 (e.g. "82 6F 82 6B")
+print "$bytes";                                        # prints first 4 bytes after decimal offset 16 (e.g., "82 6F 82 6B")
 ```
 
 ### write_bytes
@@ -106,11 +106,11 @@ Subroutine to generate hash mapping ASCII characters to custom hexadecimal value
  |______|
 ```
 
-The ASCII key in the returned hash will contain the custom hexadecimal value (e.g. $hash{'B'} will equal "01").
+The ASCII key in the returned hash will contain the custom hexadecimal value (e.g., $hash{'B'} will equal "01").
 - Parameter 1 - Full path of character map file.
 
 Example usage:
 ```
 my %character_map = generate_character_map_hash("table.txt");   # creates hash with key-value pairs for defined characters in "table.txt"
-print $character_map{'A'};                                      # prints hexadecimal representation of "A" (e.g. "8260") according to "table.txt"
+print $character_map{'C'};                                      # prints hexadecimal representation of "A" (e.g., "02") according to "table.txt"
 ```
