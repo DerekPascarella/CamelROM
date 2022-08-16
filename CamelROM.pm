@@ -162,8 +162,8 @@ sub patch_bytes
 # | 02|C |
 # |______|
 #
-# The ASCII key in the returned hash will contain the custom hexadecimal value (e.g. $hash{'B'} will
-# equal "01").
+# The ASCII key in the returned hash will contain the custom hexadecimal value (e.g., $hash{'C'} will
+# equal "02").
 #
 # 1st parameter - Full path of character map file.
 sub generate_character_map_hash
