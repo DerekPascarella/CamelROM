@@ -16,7 +16,7 @@ require Exporter;
 # Subroutine to return hexadecimal representation of a decimal number.
 #
 # 1st parameter - Decimal number.
-# 2nd parameter - Number of bytes with which to represent hexadecimal number (use "1" for no padding).
+# 2nd parameter - Number of bytes with which to represent hexadecimal number (use "0" for no padding).
 sub decimal_to_hex
 {
 	return sprintf("%0" . $_[1] * 2 . "X", $_[0]);
