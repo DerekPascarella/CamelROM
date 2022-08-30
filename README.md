@@ -6,7 +6,7 @@ CamelRom is currently at version 0.4.
 ### decimal_to_hex
 Subroutine to return hexadecimal representation of a decimal number.
 - Parameter 1 - Decimal number.
-- Parameter 2 - Number of bytes with which to represent hexadecimal number (use "0" for no padding).
+- Parameter 2 - Number of bytes with which to represent hexadecimal number (omit parameter for no padding).
 
 Example usage:
 ```
@@ -15,14 +15,14 @@ my $hex = decimal_to_hex($decimal, 2);   # subroutine returns hexadecimal repres
 print $hex;                              # prints "000A"
 $hex = decimal_to_hex($decimal, 1);      # subroutine returns hexadecimal representation
 print $hex;                              # prints "0A"
-$hex = decimal_to_hex($decimal, 0);      # subroutine returns hexadecimal representation
+$hex = decimal_to_hex($decimal);         # subroutine returns hexadecimal representation
 print $hex;                              # prints "A"
 $decimal = "256";                        # defining variable with decimal value
 $hex = decimal_to_hex($decimal, 3);      # subroutine returns hexadecimal representation
 print $hex;                              # prints "000100"
 $hex = decimal_to_hex($decimal, 2);      # subroutine returns hexadecimal representation
 print $hex;                              # prints "0100"
-$hex = decimal_to_hex($decimal, 0);      # subroutine returns hexadecimal representation
+$hex = decimal_to_hex($decimal);         # subroutine returns hexadecimal representation
 print $hex;                              # prints "100"
 ```
 
