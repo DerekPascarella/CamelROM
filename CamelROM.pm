@@ -38,7 +38,7 @@ sub endian_swap
 # returning hexadecimal representation of data.
 #
 # 1st parameter - Full path of file to read.
-# 2nd parameter - Number of bytes to read (leave empty to read entire file).
+# 2nd parameter - Number of bytes to read (omit parameter to read entire file).
 sub read_bytes
 {
 	my $file_to_read = $_[0];
