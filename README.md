@@ -29,7 +29,7 @@ print $bytes_le;                         # prints "04030201"
 ### read_bytes
 Subroutine to read a specified number of bytes (starting at the beginning) of a specified file, returning hexadecimal representation of data.
 - Parameter 1 - Full path of file to read.
-- Parameter 2 - Number of bytes to read (leave empty to read entire file).
+- Parameter 2 - Number of bytes to read (omit parameter to read entire file).
 
 Example usage:
 ```
