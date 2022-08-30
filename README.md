@@ -12,7 +12,7 @@ Example usage:
 ```
 my $decimal = "10";                      # defining variable with decimal value
 my $hex = decimal_to_hex($decimal, 2);   # subroutine returns hexadecimal representation
-print "$hex";                            # prints "000A"
+print $hex;                              # prints "000A"
 ```
 
 ### endian_swap
@@ -23,7 +23,7 @@ Example usage:
 ```
 my $bytes_be = "01 02 03 04";            # byte string can have spaces (or not)
 my $bytes_le = endian_swap($bytes_be);   # subroutine returns reversed byte string
-print "$bytes_le";                       # prints "04030201"
+print $bytes_le;                         # prints "04030201"
 ```
 
 ### read_bytes
@@ -34,7 +34,7 @@ Subroutine to read a specified number of bytes (starting at the beginning) of a 
 Example usage:
 ```
 my $bytes = read_bytes("file.bin", 4);   # reads first 4 bytes of "file.bin"
-print "$bytes";                          # prints first 4 bytes (e.g., "8263826F")
+print $bytes;                            # prints first 4 bytes (e.g., "8263826F")
 ```
 
 ### read_bytes_at_offset
@@ -46,7 +46,7 @@ Subroutine to read a specified number of bytes, starting at a specific offset (i
 Example usage:
 ```
 my $bytes = read_bytes_at_offset("file.bin", 4, 16);   # reads first 4 bytes of "file.bin" after decimal offset 16
-print "$bytes";                                        # prints first 4 bytes after decimal offset 16 (e.g., "826F826B")
+print $bytes;                                          # prints first 4 bytes after decimal offset 16 (e.g., "826F826B")
 ```
 
 ### write_bytes
