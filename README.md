@@ -23,7 +23,7 @@ Example usage:
 ```
 my $bytes_be = "01 02 03 04";            # byte string can have spaces (or not)
 my $bytes_le = endian_swap($bytes_be);   # subroutine returns reversed byte string
-print "$bytes_le";                       # prints "04 03 02 01"
+print "$bytes_le";                       # prints "04030201"
 ```
 
 ### read_bytes
@@ -34,7 +34,7 @@ Subroutine to read a specified number of bytes (starting at the beginning) of a 
 Example usage:
 ```
 my $bytes = read_bytes("file.bin", 4);   # reads first 4 bytes of "file.bin"
-print "$bytes";                          # prints first 4 bytes (e.g., "82 63 82 6F")
+print "$bytes";                          # prints first 4 bytes (e.g., "8263826F")
 ```
 
 ### read_bytes_at_offset
@@ -46,7 +46,7 @@ Subroutine to read a specified number of bytes, starting at a specific offset (i
 Example usage:
 ```
 my $bytes = read_bytes_at_offset("file.bin", 4, 16);   # reads first 4 bytes of "file.bin" after decimal offset 16
-print "$bytes";                                        # prints first 4 bytes after decimal offset 16 (e.g., "82 6F 82 6B")
+print "$bytes";                                        # prints first 4 bytes after decimal offset 16 (e.g., "826F826B")
 ```
 
 ### write_bytes
@@ -57,7 +57,7 @@ Subroutine to write a sequence of hexadecimal values to a specified file.
 Example usage:
 ```
 my $bytes = "01 02 03 04";        # byte string can have spaces (or not)
-write_bytes("out.bin", $bytes);   # writes new (or overwrites existing) file with the 4 bytes "01 02 03 04"
+write_bytes("out.bin", $bytes);   # writes new (or overwrites existing) file with the 4 bytes "01020304"
 ```
 
 ### append_bytes
@@ -68,7 +68,7 @@ Subroutine to append a sequence of hexadecimal values to a specified file.
 Example usage:
 ```
 my $bytes = "05 06 07 08";         # byte string can have spaces (or not)
-append_bytes("out.bin", $bytes);   # appends existing file with the 4 bytes "05 06 07 08"
+append_bytes("out.bin", $bytes);   # appends existing file with the 4 bytes "05060708"
 ```
 
 ### insert_bytes
@@ -92,7 +92,7 @@ Subroutine to write a sequence of hexadecimal values at a specified offset (in d
 Example usage:
 ```
 my $bytes = "05 06 07 08";            # byte string can have spaces (or not)
-patch_bytes("out.bin", $bytes, 4);    # patches file's data at decimal offset 4 with "05 06 07 08"
+patch_bytes("out.bin", $bytes, 4);    # patches file's data at decimal offset 4 with "05060708"
 ```
 
 ### generate_character_map_hash
