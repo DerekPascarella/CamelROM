@@ -1,6 +1,6 @@
 # CamelROM
-# A perl module containing useful functions for those developing translation patches and other forms
-# of ROM hacks.
+# A perl module containing useful functions for those developing translation patches and other forms of
+# ROM hacks.
 #
 # Written by Derek Pascarella (ateam)
 package CamelROM;
@@ -16,14 +16,15 @@ require Exporter;
 # Subroutine to return hexadecimal representation of a decimal number.
 #
 # 1st parameter - Decimal number.
-# 2nd parameter - Number of bytes with which to represent hexadecimal number (omit parameter for no padding).
+# 2nd parameter - Number of bytes with which to represent hexadecimal number (omit parameter for no
+#                 padding).
 sub decimal_to_hex
 {
 	if($_[1] eq "")
 	{
 		$_[1] = 0;
 	}
-	
+
 	return sprintf("%0" . $_[1] * 2 . "X", $_[0]);
 }
 
@@ -125,8 +126,8 @@ sub append_bytes
 	close $filehandle;
 }
 
-# Subroutine to insert a sequence of hexadecimal values at a specified offset (in decimal format) into a
-# specified file, as to expand the existing file.
+# Subroutine to insert a sequence of hexadecimal values at a specified offset (in decimal format) into
+# a specified file, as to expand the existing file.
 #
 # 1st parameter - Full path of file in which to insert data.
 # 2nd parameter - Hexadecimal representation of data to be inserted.
@@ -143,8 +144,8 @@ sub insert_bytes
 	&write_bytes($output_file, $data_before . $hex_data . $data_after);
 }
 
-# Subroutine to write a sequence of hexadecimal values at a specified offset (in decimal format) into a
-# specified file, as to patch the existing data at that offset.
+# Subroutine to write a sequence of hexadecimal values at a specified offset (in decimal format) into
+# a specified file, as to patch the existing data at that offset.
 #
 # 1st parameter - Full path of file in which to insert patch data.
 # 2nd parameter - Hexadecimal representation of data to be inserted.
