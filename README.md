@@ -1,12 +1,12 @@
 # CamelROM
 <img align="right" src="https://i.imgur.com/K3dXPTm.png">A Perl module containing useful functions for those developing translation patches and other forms of ROM hacks.
 
-CamelRom is currently at version 1.3.
+CamelRom is currently at version 0.4.
 
 ### decimal_to_hex
 Subroutine to return hexadecimal representation of a decimal number.
 - Parameter 1 - Decimal number.
-- Parameter 2 - Number of bytes with which to represent hexadecimal number.
+- Parameter 2 - Number of bytes with which to represent hexadecimal number (use "1" for no padding).
 
 Example usage:
 ```
@@ -29,7 +29,7 @@ print "$bytes_le";                       # prints "04 03 02 01"
 ### read_bytes
 Subroutine to read a specified number of bytes (starting at the beginning) of a specified file, returning hexadecimal representation of data.
 - Parameter 1 - Full path of file to read.
-- Parameter 2 - Number of bytes to read.
+- Parameter 2 - Number of bytes to read (leave empty to read entire file).
 
 Example usage:
 ```
