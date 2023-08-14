@@ -6,7 +6,7 @@
 package CamelROM;
 
 # Declare module version.
-our $VERSION = 0.4;
+our $VERSION = 0.5;
 
 # Export subroutines.
 require Exporter;
@@ -47,16 +47,16 @@ sub endian_swap
 # 2nd parameter - Number of bytes to read (omit parameter to read entire file).
 sub read_bytes
 {
-	my $file_to_read = $_[0];
-	my $bytes_to_read = $_[1];
+	my $input_file = $_[0];
+	my $byte_count = $_[1];
 
-	if($bytes_to_read eq "")
+	if($byte_count eq "")
 	{
-		$bytes_to_read = (stat $file_to_read)[7];
+		$byte_count = (stat $input_file)[7];
 	}
 
-	open my $filehandle, '<:raw', "$file_to_read" or die $!;
-	read $filehandle, my $bytes, $bytes_to_read;
+	open my $filehandle, '<:raw', $input_file or die $!;
+	read $filehandle, my $bytes, $byte_count;
 	close $filehandle;
 	
 	return unpack 'H*', $bytes;
@@ -70,13 +70,13 @@ sub read_bytes
 # 3rd parameter - Offset at which to read.
 sub read_bytes_at_offset
 {
-	my $file_to_read = $_[0];
-	my $bytes_to_read = $_[1];
+	my $input_file = $_[0];
+	my $byte_count = $_[1];
 	my $read_offset = $_[2];
 
-	open my $filehandle, '<:raw', "$file_to_read" or die $!;
+	open my $filehandle, '<:raw', $input_file or die $!;
 	seek $filehandle, $read_offset, 0;
-	read $filehandle, my $bytes, $bytes_to_read;
+	read $filehandle, my $bytes, $byte_count;
 	close $filehandle;
 	
 	return unpack 'H*', $bytes;
@@ -95,7 +95,7 @@ sub write_bytes
 	open my $filehandle, '>', $output_file or die $!;
 	binmode $filehandle;
 
-	for(my $i = 0; $i < @hex_data_array; $i += 2)
+	for(my $i = 0; $i < scalar(@hex_data_array); $i += 2)
 	{
 		my($high, $low) = @hex_data_array[$i, $i + 1];
 		print $filehandle pack "H*", $high . $low;
@@ -117,7 +117,7 @@ sub append_bytes
 	open my $filehandle, '>>', $output_file or die $!;
 	binmode $filehandle;
 
-	for(my $i = 0; $i < @hex_data_array; $i += 2)
+	for(my $i = 0; $i < scalar(@hex_data_array); $i += 2)
 	{
 		my($high, $low) = @hex_data_array[$i, $i + 1];
 		print $filehandle pack "H*", $high . $low;
@@ -138,6 +138,11 @@ sub insert_bytes
 	(my $hex_data = $_[1]) =~ s/\s+//g;
 	my $insert_offset = $_[2];
 		
+	if((stat $output_file)[7] < $insert_offset + (length($hex_data) / 2))
+	{
+		die "Offset for insert_bytes is outside of valid range.\n";
+	}
+
 	my $data_before = &read_bytes($output_file, $insert_offset);
 	my $data_after = &read_bytes_at_offset($output_file, (stat $output_file)[7] - $insert_offset, $insert_offset);
 	
@@ -154,13 +159,25 @@ sub patch_bytes
 {
 	my $output_file = $_[0];
 	(my $hex_data = $_[1]) =~ s/\s+//g;
-	my $insert_offset = $_[2];
-	my $hex_data_length = length($hex_data) / 2;
-	
-	my $data_before = &read_bytes($output_file, $insert_offset);
-	my $data_after = &read_bytes_at_offset($output_file, (stat $output_file)[7] - $insert_offset - $hex_data_length, $insert_offset + $hex_data_length);
-	
-	&write_bytes($output_file, $data_before . $hex_data . $data_after);
+	my @hex_data_array = split(//, $hex_data);
+	my $patch_offset = $_[2];
+
+	if((stat $output_file)[7] < $patch_offset + scalar(@hex_data_array))
+	{
+		die "Offset for patch_bytes is outside of valid range.\n";
+	}
+
+	open my $filehandle, '+<', $output_file or die $!;
+	binmode $filehandle;
+	seek $filehandle, $patch_offset, 0;
+
+	for(my $i = 0; $i < scalar(@hex_data_array); $i += 2)
+	{
+		my($high, $low) = @hex_data_array[$i, $i + 1];
+		print $filehandle pack "H*", $high . $low;
+	}
+
+	close $filehandle;
 }
 
 # Subroutine to generate hash mapping ASCII characters to custom hexadecimal values. Source character
