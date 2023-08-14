@@ -92,7 +92,7 @@ sub write_bytes
 	(my $hex_data = $_[1]) =~ s/\s+//g;
 	my @hex_data_array = split(//, $hex_data);
 
-	open my $filehandle, '>', $output_file or die $!;
+	open my $filehandle, '>:raw', $output_file or die $!;
 	binmode $filehandle;
 
 	for(my $i = 0; $i < scalar(@hex_data_array); $i += 2)
@@ -167,7 +167,7 @@ sub patch_bytes
 		die "Offset for patch_bytes is outside of valid range.\n";
 	}
 
-	open my $filehandle, '+<', $output_file or die $!;
+	open my $filehandle, '+<:raw', $output_file or die $!;
 	binmode $filehandle;
 	seek $filehandle, $patch_offset, 0;
 
