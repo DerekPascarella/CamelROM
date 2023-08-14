@@ -1,7 +1,7 @@
 # CamelROM
 <img align="right" src="https://i.imgur.com/K3dXPTm.png">A Perl module containing useful functions for those developing translation patches and other forms of ROM hacks.
 
-CamelRom is currently at version 0.4.
+CamelRom is currently at version 0.5.
 
 ### decimal_to_hex
 Subroutine to return hexadecimal representation of a decimal number.
