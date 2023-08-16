@@ -143,7 +143,7 @@ sub insert_bytes
 	(my $hex_data = $_[1]) =~ s/\s+//g;
 	my $insert_offset = $_[2];
 		
-	if((stat $output_file)[7] < $insert_offset + (length($hex_data) / 2))
+	if((stat $output_file)[7] < $insert_offset + 1)
 	{
 		die "Offset for insert_bytes is outside of valid range.\n";
 	}
