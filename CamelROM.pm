@@ -167,7 +167,7 @@ sub patch_bytes
 	my @hex_data_array = split(//, $hex_data);
 	my $patch_offset = $_[2];
 
-	if((stat $output_file)[7] < $patch_offset + scalar(@hex_data_array))
+	if((stat $output_file)[7] < $patch_offset + scalar(@hex_data_array) - 1)
 	{
 		die "Offset for patch_bytes is outside of valid range.\n";
 	}
