@@ -74,7 +74,7 @@ sub read_bytes_at_offset
 	my $byte_count = $_[1];
 	my $read_offset = $_[2];
 
-	if((stat $input_file)[7] < $read_offset + 1)
+	if((stat $input_file)[7] < $read_offset + $byte_count)
 	{
 		die "Offset for read_bytes_at_offset is outside of valid range.\n";
 	}
