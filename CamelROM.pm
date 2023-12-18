@@ -6,7 +6,7 @@
 package CamelROM;
 
 # Declare module version.
-our $VERSION = 0.5;
+our $VERSION = 0.6;
 
 # Export subroutines.
 require Exporter;
@@ -210,6 +210,9 @@ sub generate_character_map_hash
 
 	foreach(@mapped_characters)
 	{
+		$_ =~ s/\P{IsPrint}//g;
+		$_ =~ s/[^[:ascii:]]+//g;
+
 		$character_table{(split /\|/, $_)[1]} = (split /\|/, $_)[0];
 	}
 
