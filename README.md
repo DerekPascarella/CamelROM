@@ -3,7 +3,7 @@
 
 Note that binary data is intentionally treated as strings, even though this is known to be suboptimal for performance and code efficiency. In general, handling raw bytes as strings can negatively impact execution speed and optimization. However, this approach is used deliberately to leverage Perl's powerful string manipulation capabilities when working with hexadecimal byte arrays.
 
-CamelRom is currently at version 0.6.
+CamelRom is currently at version 0.7.
 
 ### decimal_to_hex
 Subroutine to return hexadecimal representation of a decimal number.
@@ -34,8 +34,8 @@ Subroutine to swap between big/little endian by reversing order of bytes from sp
 
 Example usage:
 ```
-my $bytes_be = "01 02 03 04";            # byte string can have spaces (or not)
-my $bytes_le = endian_swap($bytes_be);   # subroutine returns reversed byte string
+my $bytes_be = "01 02 03 04";            # byte array can have spaces (or not)
+my $bytes_le = endian_swap($bytes_be);   # subroutine returns reversed byte array
 print $bytes_le;                         # prints "04030201"
 ```
 
@@ -69,7 +69,7 @@ Subroutine to write a sequence of hexadecimal values to a specified file.
 
 Example usage:
 ```
-my $bytes = "01 02 03 04";        # byte string can have spaces (or not)
+my $bytes = "01 02 03 04";        # byte array can have spaces (or not)
 write_bytes("out.bin", $bytes);   # writes new (or overwrites existing) file with the 4 bytes "01020304"
 ```
 
@@ -80,7 +80,7 @@ Subroutine to append a sequence of hexadecimal values to a specified file.
 
 Example usage:
 ```
-my $bytes = "05 06 07 08";         # byte string can have spaces (or not)
+my $bytes = "05 06 07 08";         # byte array can have spaces (or not)
 append_bytes("out.bin", $bytes);   # appends existing file with the 4 bytes "05060708"
 ```
 
@@ -92,7 +92,7 @@ Subroutine to insert a sequence of hexadecimal values at a specified offset (in 
 
 Example usage:
 ```
-my $bytes = "05 06 07 08";            # byte string can have spaces (or not)
+my $bytes = "05 06 07 08";            # byte array can have spaces (or not)
 insert_bytes("out.bin", $bytes, 4);   # inserts "05 06 07 08" into file at decimal offset 4
 ```
 
@@ -104,8 +104,19 @@ Subroutine to write a sequence of hexadecimal values at a specified offset (in d
 
 Example usage:
 ```
-my $bytes = "05 06 07 08";            # byte string can have spaces (or not)
+my $bytes = "05 06 07 08";            # byte array can have spaces (or not)
 patch_bytes("out.bin", $bytes, 4);    # patches file's data at decimal offset 4 with "05060708"
+```
+
+### bytes_exist
+Subroutine to return true if a specified byte pattern is found in a specified file.
+- Parameter 1 - Full path of file to read.
+- Parameter 2 - Hexadecimal representation of data to be searched.
+
+Example usage:
+```
+my $bytes = "05 06 07 08";            # byte array can have spaces (or not)
+bytes_exist("out.bin", $bytes, 4);    # returns true if the byte array "05060708" is found
 ```
 
 ### generate_character_map_hash
