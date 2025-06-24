@@ -1,6 +1,8 @@
 # CamelROM
 <img align="right" src="https://i.imgur.com/K3dXPTm.png">A Perl module containing useful functions for those developing translation patches and other forms of ROM hacks.
 
+Note that binary data is intentionally treated as strings, even though this is known to be suboptimal for performance and code efficiency. In general, handling raw bytes as strings can negatively impact execution speed and optimization. However, this approach is used deliberately to leverage Perl's powerful string manipulation capabilities when working with hexadecimal byte arrays.
+
 CamelRom is currently at version 0.6.
 
 ### decimal_to_hex
